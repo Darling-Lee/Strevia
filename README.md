@@ -4,7 +4,7 @@
   <p><b>片源、播放、下载、投屏，都在一个窗口里。</b></p>
   <p>
     <img src="https://img.shields.io/badge/version-0.1.5-1f6feb?style=flat-square" alt="version" />
-    <img src="https://img.shields.io/badge/Windows-macOS-Linux-2ea043?style=flat-square" alt="platforms" />
+    <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-2ea043?style=flat-square" alt="platforms" />
     <img src="https://img.shields.io/badge/Android-arm64-3ddc84?style=flat-square" alt="android" />
   </p>
   <p>
@@ -28,32 +28,32 @@ Strevia 是一个影视聚合播放器。
 
 ## 亮点
 
-**一个窗口，从找片到投到电视**
+**一个窗口，从找片到投到电视**<br>
 浏览、详情、选集、播放、下载、投屏，都在同一个应用里完成。
 
-**五套皮肤，整套重做**
+**五套皮肤，整套重做**<br>
 深色、浅色、深海、松林、樱雾。换肤是整套界面一起换，不是局部换个颜色；也可以跟随系统自动切换。
 
-**手机不是"另一个 App"**
+**手机不是"另一个 App"**<br>
 安卓版和桌面版是同一套界面、同一套功能。皮肤一样，投屏一样，下载引擎也一样。
 
-**投屏之后可以走开**
+**投屏之后可以走开**<br>
 投屏守护会替你盯着电视：播到哪了、下一集有没有就绪，随时能看；切集、暂停、继续，随时能动手。就算把播放页关掉，投屏也不会断。
 
-**下一集提前备好**
+**下一集提前备好**<br>
 推送的那一刻起，整部剧每一集的播放地址就开始准备。电视播完自动接上，不用临时解析。
 
-**老 Mac 也能打开**
+**老 Mac 也能打开**<br>
 最低支持 macOS 12，Intel 和 Apple 芯片共用一个安装包。
 
-**下载不用装任何外部工具**
+**下载不用装任何外部工具**<br>
 内置下载引擎，装好就能下。不依赖 ffmpeg，也不需要命令行工具。
 
 ## 界面
 
 <div align="center">
   <img src="docs/assets/main.jpg" width="880" alt="Strevia 主界面" />
-  <p><sub>主界面 · 左侧片源与分类，中间海报墙，顶部搜索</sub></p>
+  <p><sub>五套皮肤与手机版：左列为桌面版，右列为手机版</sub></p>
 </div>
 
 ## 功能
@@ -94,6 +94,11 @@ Strevia 是一个影视聚合播放器。
 - **投屏守护**：独立面板显示电视端状态、播放进度和整部剧的地址准备情况；可直接切集、暂停、继续、退出
 - **自动连播**：推送时就把整部剧每一集的地址准备好，电视播完自动接下一集
 - **排他推送**：推送前先停掉同一台电视上的其它投屏，避免被家里另一台设备顶掉
+
+<div align="center">
+  <img src="docs/assets/cast.jpg" width="860" alt="投屏面板" />
+  <p><sub>投屏面板：同一 Wi-Fi 下的电视、盒子会自动出现在列表里</sub></p>
+</div>
 
 <div align="center">
   <img src="docs/assets/cast-guard.jpg" width="880" alt="投屏守护面板" />
@@ -149,14 +154,14 @@ Strevia 是一个影视聚合播放器。
 
 ## 安装
 
-**macOS**
+**macOS**<br>
 双击 pkg 安装。安装包没有购买开发者签名，首次打开如果被系统拦下，右键点击应用图标选择「打开」，或在「系统设置 → 隐私与安全性」里允许一次即可。
 投屏需要访问本地网络，首次投屏时系统会询问，请选择允许。
 
-**Windows**
+**Windows**<br>
 按机型选 x64 或 arm64，不要混用。运行安装程序按提示完成。
 
-**Linux**
+**Linux**<br>
 给安装器加执行权限后直接运行：
 
 ```bash
@@ -164,21 +169,21 @@ chmod +x Strevia-0.1.5-Linux-x86_64-Installer
 ./Strevia-0.1.5-Linux-x86_64-Installer
 ```
 
-**Android**
+**Android**<br>
 安装前需要在系统里允许安装未知来源应用。
 
 ## 常见问题
 
-**投屏搜不到电视？**
+**投屏搜不到电视？**<br>
 确认手机或电脑与电视在同一个 Wi-Fi 下；访客网络和开启了"AP 隔离"的路由器会让设备互相看不见；部分路由器会过滤组播，可以稍等几秒让应用换一种方式再找一次。
 
-**下载速度上不去？**
+**下载速度上不去？**<br>
 先看限速是不是设了上限；网络不稳时把分片并发调低反而更快；失败重试次数过高会让慢速源拖很久。
 
-**数据存在哪里？**
+**数据存在哪里？**<br>
 片源配置、收藏、历史、下载任务都保存在本机，不上传任何服务器。换机时可以导出再导入。
 
-**支持哪些片源？**
+**支持哪些片源？**<br>
 标准苹果CMS接口的站点。片源需要你自己准备和配置。
 
 ## 反馈
@@ -205,25 +210,25 @@ Add the sites you already use, then browse, search and play them in one place. K
 
 ## Highlights
 
-**One window, from browsing to the TV**
+**One window, from browsing to the TV**<br>
 Browse, pick an episode, play, download and cast without bouncing between a browser, a player and a download tool.
 
-**Five themes, fully redrawn**
+**Five themes, fully redrawn**<br>
 Dark, Light, Ocean, Forest and Sakura. Switching a theme repaints the whole interface — main window and player together — or just follow the system.
 
-**The phone app is not a different app**
+**The phone app is not a different app**<br>
 Android and desktop share the same interface and the same features: same themes, same casting, same download engine.
 
-**Walk away while it casts**
+**Walk away while it casts**<br>
 The cast guard keeps an eye on your TV: progress, the next episode, and controls for switching, pausing or stopping. Close the player page — casting keeps running.
 
-**The next episode is already prepared**
+**The next episode is already prepared**<br>
 From the moment you start casting, playback addresses for every episode are prepared in the background. When one ends, the next one is ready to go.
 
-**Runs on older Macs**
+**Runs on older Macs**<br>
 macOS 12 and up, with a single universal build for Intel and Apple silicon.
 
-**No external tools needed for downloads**
+**No external tools needed for downloads**<br>
 The download engine is built in. No ffmpeg, no command-line utilities.
 
 ## Features
