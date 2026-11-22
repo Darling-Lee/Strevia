@@ -208,6 +208,13 @@ Add the sites you already use, then browse, search and play them in one place. K
 
 > Strevia ships no content. You bring your own sources.
 
+## Screenshots
+
+<div align="center">
+  <img src="docs/assets/main.jpg" width="880" alt="Strevia main window" />
+  <p><sub>Five themes and the phone app: desktop on the left, mobile on the right</sub></p>
+</div>
+
 ## Highlights
 
 **One window, from browsing to the TV**<br>
@@ -258,6 +265,16 @@ The download engine is built in. No ffmpeg, no command-line utilities.
 - **Auto next**: every episode's address is prepared up front, so the next one starts right after the current one ends
 - **Exclusive push**: stops other casters on the same TV first, so nothing gets hijacked
 
+<div align="center">
+  <img src="docs/assets/cast.jpg" width="880" alt="Cast panel" />
+  <p><sub>The cast panel beside the player; the phone app is on the right</sub></p>
+</div>
+
+<div align="center">
+  <img src="docs/assets/cast-guard.jpg" width="880" alt="Cast guard panel" />
+  <p><sub>Left: cast guard on desktop. Right: the same panel on mobile</sub></p>
+</div>
+
 ### Downloads
 
 - Built-in engine for HLS, DASH and direct links — no external binaries
@@ -266,6 +283,11 @@ The download engine is built in. No ffmpeg, no command-line utilities.
 - Resume, automatic retries, speed limiting and custom request headers
 - Automatic selection of the best track
 - **Handling broken streams**: detects multiple init segments, mid-stream resolution changes and duration gaps. By default everything is kept; with "skip abnormal segments" enabled, abnormal groups under 20% of total duration are dropped and the result is an MP4, while anything above 20% keeps every segment and falls back to TS — never silently deleting content
+
+<div align="center">
+  <img src="docs/assets/download.jpg" width="760" alt="Download engine settings" />
+  <p><sub>Download settings: concurrency, retries, timeouts, speed limit and broken-stream handling</sub></p>
+</div>
 
 ### Live TV
 
