@@ -96,8 +96,8 @@ Strevia 是一个影视聚合播放器。
 - **排他推送**：推送前先停掉同一台电视上的其它投屏，避免被家里另一台设备顶掉
 
 <div align="center">
-  <img src="docs/assets/cast.jpg" width="860" alt="投屏面板" />
-  <p><sub>投屏面板：同一 Wi-Fi 下的电视、盒子会自动出现在列表里</sub></p>
+  <img src="docs/assets/cast.jpg" width="880" alt="投屏面板" />
+  <p><sub>播放页侧边的投屏面板；右列为手机端，设备会自动出现</sub></p>
 </div>
 
 <div align="center">
