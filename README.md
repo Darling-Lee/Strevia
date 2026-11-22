@@ -18,7 +18,7 @@
 
 ## 这是什么
 
-Strevia 是一个影视聚合播放器。
+Strevia 是一个使用 Rust + Tauri2 开发的影视聚合播放器。
 
 把你常看的几个站点配进来，就能在同一个地方浏览、搜索、播放；看到想留的，直接下载；想放到大屏上看，一键投到电视。
 
@@ -38,7 +38,7 @@ Strevia 是一个影视聚合播放器。
 安卓版和桌面版是同一套界面、同一套功能。皮肤一样，投屏一样，下载引擎也一样。
 
 **投屏之后可以走开**<br>
-投屏守护会替你盯着电视：播到哪了、下一集有没有就绪，随时能看；切集、暂停、继续，随时能动手。就算把播放页关掉，投屏也不会断。
+只要设备与电视保持在同一个局域网内：投屏守护会替你盯着电视，播到哪了、下一集有没有就绪，随时能看；切集、暂停、继续，随时能动手。就算把播放页关掉，投屏也不会断。
 
 **下一集提前备好**<br>
 推送的那一刻起，整部剧每一集的播放地址就开始准备。电视播完自动接上，不用临时解析。
@@ -67,7 +67,9 @@ Strevia 是一个影视聚合播放器。
 
 ### 播放
 
-- 内置播放器，支持 HLS、DASH、直链与直播流
+- 内嵌 mpv 播放器：解码能力更强，流媒体格式支持更广（HLS、DASH、直链与直播流）
+- 音频五段 EQ 与画面调节（亮度、对比度、饱和度、色调、伽马），支持画面旋转与水平/垂直翻转
+- 四线程预取：边播边把后续分片提前缓存到本地，网络波动时也不容易卡
 - 倍速 0.75×–3×，会记住你上次选的档位
 - 多画质切换
 - 手势控制与键盘快捷键
@@ -89,7 +91,7 @@ Strevia 是一个影视聚合播放器。
 
 ### 投屏到电视
 
-- 同一 Wi-Fi 下自动发现电视、盒子，不用输 IP
+- 同一局域网内自动发现电视、盒子，不用输 IP
 - **只推原始直链**：电脑不中转、不转码，电视拿到的是源站原画，也不额外占用电脑带宽
 - **投屏守护**：独立面板显示电视端状态、播放进度和整部剧的地址准备情况；可直接切集、暂停、继续、退出
 - **自动连播**：推送时就把整部剧每一集的地址准备好，电视播完自动接下一集
@@ -175,7 +177,7 @@ chmod +x Strevia-0.1.5-Linux-x86_64-Installer
 ## 常见问题
 
 **投屏搜不到电视？**<br>
-确认手机或电脑与电视在同一个 Wi-Fi 下；访客网络和开启了"AP 隔离"的路由器会让设备互相看不见；部分路由器会过滤组播，可以稍等几秒让应用换一种方式再找一次。
+确认手机或电脑与电视在同一个局域网内；访客网络和开启了"AP 隔离"的路由器会让设备互相看不见；部分路由器会过滤组播，可以稍等几秒让应用换一种方式再找一次。投屏全程都要求设备与电视保持在同一局域网，中途换网或断开，投屏会中断。
 
 **下载速度上不去？**<br>
 先看限速是不是设了上限；网络不稳时把分片并发调低反而更快；失败重试次数过高会让慢速源拖很久。
@@ -185,6 +187,9 @@ chmod +x Strevia-0.1.5-Linux-x86_64-Installer
 
 **支持哪些片源？**<br>
 标准苹果CMS接口的站点。片源需要你自己准备和配置。
+
+**支持哪些直播源？**<br>
+M3U / TXT 格式的频道清单，支持远程地址、本地文件和直接粘贴文本三种方式；带 `#EXTINF` 的标准 M3U 与常见的 TXT 频道列表都能解析，频道分组、台标和回看参数会一并识别。直播源同样需要你自己准备，Strevia 不内置任何频道。
 
 ## 反馈
 
@@ -202,7 +207,7 @@ chmod +x Strevia-0.1.5-Linux-x86_64-Installer
 
 ## What is Strevia
 
-Strevia is a desktop and mobile media player for the sources you configure yourself.
+Strevia is a media aggregation player built with Rust and Tauri 2, for the sources you configure yourself.
 
 Add the sites you already use, then browse, search and play them in one place. Keep what you want with the built-in downloader. Send it to your TV with one click — no extra casting app required.
 
@@ -227,7 +232,7 @@ Dark, Light, Ocean, Forest and Sakura. Switching a theme repaints the whole inte
 Android and desktop share the same interface and the same features: same themes, same casting, same download engine.
 
 **Walk away while it casts**<br>
-The cast guard keeps an eye on your TV: progress, the next episode, and controls for switching, pausing or stopping. Close the player page — casting keeps running.
+As long as your device and the TV stay on the same local network, the cast guard keeps an eye on the TV: progress, the next episode, and controls for switching, pausing or stopping. Close the player page — casting keeps running. Switching networks or dropping off the LAN interrupts the cast.
 
 **The next episode is already prepared**<br>
 From the moment you start casting, playback addresses for every episode are prepared in the background. When one ends, the next one is ready to go.
@@ -250,6 +255,9 @@ The download engine is built in. No ffmpeg, no command-line utilities.
 ### Playback
 
 - Built-in player: HLS, DASH, direct links and live streams
+- Embedded mpv engine: stronger decoding and broader streaming-format support
+- Five-band audio EQ and picture controls (brightness, contrast, saturation, hue, gamma), plus rotation and horizontal/vertical flip
+- Four-thread prefetch: upcoming segments are cached ahead of playback, so network hiccups don't interrupt viewing
 - Playback speed from 0.75× to 3×, remembered for next time
 - Multiple quality levels
 - Touch gestures and keyboard shortcuts
@@ -259,7 +267,7 @@ The download engine is built in. No ffmpeg, no command-line utilities.
 
 ### Casting to a TV
 
-- Automatic discovery of TVs and boxes on the same Wi-Fi
+- Automatic discovery of TVs and boxes on the same local network
 - **Direct links only**: nothing is relayed or transcoded, so the TV gets the original stream and your computer's bandwidth stays free
 - **Cast guard**: a panel with the TV's state, playback position and address readiness; switch episodes, pause, resume or stop from there
 - **Auto next**: every episode's address is prepared up front, so the next one starts right after the current one ends
@@ -339,13 +347,15 @@ chmod +x Strevia-0.1.5-Linux-x86_64-Installer
 
 ## FAQ
 
-**The TV doesn't show up.** Make sure both devices are on the same Wi-Fi. Guest networks and AP isolation hide devices from each other, and some routers filter multicast — give it a few seconds to try another discovery method.
+**The TV doesn't show up.** Make sure your phone or computer and the TV are on the same local network. Guest networks and AP isolation hide devices from each other, and some routers filter multicast — give it a few seconds to try another discovery method. Casting requires both devices to remain on the same LAN throughout; switching networks or leaving the LAN interrupts the cast.
 
 **Downloads are slow.** Check the speed limit first. Lowering segment concurrency often helps on unstable networks, and very high retry counts can make a slow source drag on.
 
 **Where is my data?** Sources, favorites, history and download tasks stay on your device. Nothing is uploaded. You can export and import them when switching machines.
 
 **Which sources are supported?** Standard Apple CMS (v10) APIs. You provide and configure the sources yourself.
+
+**Which live sources are supported?** M3U / TXT channel playlists, from a remote URL, a local file, or text pasted directly. Standard M3U lists with `#EXTINF` and common TXT channel lists are both parsed, along with groups, logos and catch-up parameters. You bring your own live sources — Strevia ships no channels.
 
 ## Feedback
 
